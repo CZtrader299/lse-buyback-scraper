@@ -1,0 +1,8 @@
+# Optional: tickers to skip from extraction.
+# This project defaults to processing every UK Investment Trust share-transaction
+# announcement on the RNS feed. If you want to skip specific tickers (e.g. tickers
+# you don't track, or known-problematic formats), create not_tracked_tickers.xlsx
+# with the ticker symbols in column A, one per row, starting at row 2 (row 1 is
+# treated as a header).
+#
+# Without this file, all announcements are processed.

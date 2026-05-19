@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+.DS_Store
+
+# Project-specific output and runtime files
+lse_transactions_*.log
+lse_transactions_*.xlsx
+lse_transactions_*.csv
+ticker_review_history.json
+not_tracked_tickers.xlsx
+
+# Internal docs and assets that shouldn't be in public version
+docs/superpowers/
+nedry.gif
+CHANGELOG-*.md
+CODEX_SETUP.md
+*.xlsm
+
+# Environment
+.env
+.env.local
