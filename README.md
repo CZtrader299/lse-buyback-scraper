@@ -60,8 +60,9 @@ The reviewer is provider-agnostic. Pick whichever backend matches your environme
 - **Claude CLI**: uses a local Claude Code install (`claude` on `PATH`). No API key
   needed if you're already running Claude Code; useful when you want everything to go
   through one workspace.
-- **Ollama**: local, fully offline. Tested with `llama3.1:8b`; accuracy on this task is
-  noticeably worse than the hosted APIs. Useful when data must not leave the machine,
+- **Ollama**: local, fully offline. Defaults to `qwen2.5:3b` (override with
+  `OLLAMA_MODEL`); accuracy on this task is noticeably worse than the hosted APIs, and
+  smaller local models widen that gap. Useful when data must not leave the machine,
   not as a quality-first default.
 - **`none`**: regex only. Works completely offline, but loses the AI reviewer's
   handling of ambiguous announcements. Reasonable for a quick sanity check.
@@ -108,7 +109,7 @@ fixtures and stubs, not against the live LSE.
   tickers entirely (see `not_tracked_tickers.example.txt`).
 - The scraper depends on the LSE News Explorer URL structure; if LSE changes it, the
   selectors and API parameters here will need updating.
-- Ollama with weaker local models (e.g. `llama3.1:8b`) has lower accuracy than the hosted
+- Ollama with smaller local models (e.g. `qwen2.5:3b`) has lower accuracy than the hosted
   APIs on this task.
 
 ## Architecture

@@ -137,7 +137,7 @@ TICKER_OVERRIDES = {
 # Options: none, auto, anthropic_api, openai_api, claude_cli, ollama.
 AI_REVIEW_PROVIDER = os.getenv("LSE_AI_PROVIDER", "auto").strip().lower()
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.1:8b")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
 OLLAMA_TIMEOUT = int(os.getenv("OLLAMA_TIMEOUT", "300"))
 
 # Anthropic API settings
