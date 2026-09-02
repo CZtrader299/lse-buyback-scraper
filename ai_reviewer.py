@@ -97,11 +97,24 @@ class AIReviewer(ClaudeReviewer):
 
     @staticmethod
     def _check_ollama_available():
+        """Check the Ollama server is up *and* the configured model is installed.
+
+        A running server with the model missing would otherwise be reported as an
+        available provider and then fail at request time with a 404, which under
+        "auto" prevents the fall-through to another provider.
+        """
         try:
             resp = requests.get(f"{config.OLLAMA_BASE_URL}/api/tags", timeout=3)
-            return resp.ok
-        except requests.RequestException:
+            if not resp.ok:
+                return False
+            installed = {m.get("name", "") for m in resp.json().get("models", [])}
+        except (requests.RequestException, ValueError):
             return False
+
+        # Ollama reports names tag-qualified ("qwen2.5:3b"); config may omit the
+        # tag, so treat a bare name as matching its ":latest" tag.
+        wanted = config.OLLAMA_MODEL
+        return wanted in installed or f"{wanted}:latest" in installed
 
     def review_multi_class(self, page_text, ticker, class_tickers):
         if not self.available:
